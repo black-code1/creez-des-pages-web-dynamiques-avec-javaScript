@@ -2,7 +2,7 @@
 // const pieces = await fetch("pieces-auto.json").then(pieces => pieces.json())
 import {ajoutListenerAvis} from "./avis.js";
 
-const reponse = await fetch('pieces-autos.json')
+const reponse = await fetch('http://localhost:8081/pieces')
 const pieces = await reponse.json()
 
 // Fonction qui genere toute la page web
