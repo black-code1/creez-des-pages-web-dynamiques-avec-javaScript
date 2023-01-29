@@ -1,5 +1,7 @@
 // Recuperation des pieces depuis le fichier JSON
 // const pieces = await fetch("pieces-auto.json").then(pieces => pieces.json())
+import {ajoutListenerAvis} from "./avis.js";
+
 const reponse = await fetch('pieces-autos.json')
 const pieces = await reponse.json()
 
@@ -25,6 +27,11 @@ function genererPieces(pieces) {
         const stockElement = document.createElement("p");
         stockElement.innerText = article.disponibilite ? "En stock" : "Rupture de stock";
 
+        //Code ajoute
+        const avisBouton = document.createElement("button")
+        avisBouton.dataset.id = article.id
+        avisBouton.textContent = "Afficher les avis"
+
         // On rattache la balise article a la section Fiches
         sectionFiches.appendChild(pieceElement);
         // On rattache l’image à pieceElement (la balise article)
@@ -35,7 +42,11 @@ function genererPieces(pieces) {
         //Ajout des éléments au DOM pour l'exercice
         pieceElement.appendChild(descriptionElement);
         pieceElement.appendChild(stockElement);
+        //Code ajoute
+        pieceElement.appendChild(avisBouton)
     }
+
+    ajoutListenerAvis()
 }
 
 genererPieces(pieces);
