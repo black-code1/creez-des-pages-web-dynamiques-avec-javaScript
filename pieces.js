@@ -1,9 +1,12 @@
 // Recuperation des pieces depuis le fichier JSON
 // const pieces = await fetch("pieces-auto.json").then(pieces => pieces.json())
-import {ajoutListenerAvis} from "./avis.js";
+import {ajoutListenerAvis, ajoutListenerEnvoyerAvis} from "./avis.js";
 
-const reponse = await fetch('http://localhost:8081/pieces')
-const pieces = await reponse.json()
+// Récupération des pièces depuis le fichier JSON
+const reponse = await fetch('http://localhost:8081/pieces/');
+const pieces = await reponse.json();
+// on appelle la fonction pour ajouter le listener au formulaire
+ajoutListenerEnvoyerAvis()
 
 // Fonction qui genere toute la page web
 function genererPieces(pieces) {
